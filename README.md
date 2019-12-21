@@ -17,14 +17,23 @@ Y listo para correr!
 
 ## Ejecutando el script
 
-Basta con llamar al script mediante la consola con python:
+Si es primera vez que se ejecuta el script, o el archivo de configuracion no existe (ya sea porque se elimino o se
+renombro), entonces basta con llamar al script mediante la consola con python:
 
 ```
 python3 SERIO.py
 ```
-E introduzca los datos pedidos, una corrida comun se veria como:
 
-![example_run](./example_run_opt.jpg)
+Y el creara el archivo de configuracion y aplicara la triangulacion sobre una de las imagenes de muestra.
+
+Si se quiere hacer cambios sobre el archivo de configuracion, tales como cambiar la imagen a triangular, 
+la ruta de guardado, u cualquier otro dato, basta con modificar los campos correspondiente en el propio archivo.
+
+## Resultados
+
+![best_girl](./BESTGIRL.gif)
+
+![monte](./monte.gif)
 
 ## Authors
 

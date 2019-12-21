@@ -6,6 +6,7 @@ import cv2
 import imageio
 from scipy.spatial import *
 from scipy.misc import *
+import os
 
 class Individuo:
 
@@ -214,3 +215,46 @@ def ptInTriangle(p, p0, p1, p2):
 		return ((s<=0) and (t<=0) and (s+t>=D) )
 	else: 
 		return ((s>=0) and (t>=0) and (s+t<=D))
+
+def generate_config_file():
+	path = os.getcwd()
+	longitud_path = len(path)
+	with open("configuration.txt","w+") as f:
+		f.write("Ruta de la imagen="+path[:longitud_path-4]+"image_set/bestgirl.jpg\n")
+		f.write("Ruta de la carpeta donde se guardaran las imagenes="+path[:longitud_path-4]+"Results/\n")
+		f.write("Numero de generaciones=10\n")
+		f.write("Porcentaje de que ocurra una mutacion=50\n")
+		f.write("Cantidad de individuos=10\n")
+		f.write("Porcentaje de reproduccion=100\n")
+def check_load_config_file():
+	path = os.getcwd()
+	data = []
+	if os.path.exists(path+"configuration.txt"):
+		print("i exists")
+		with open("configuration.txt","+r") as f:
+			for lines in f:
+				data.append(lines)
+	else:
+		generate_config_file()
+		with open("configuration.txt","+r") as f:
+			for lines in f:
+				data.append(lines)
+	data[0] = data[0][18:len(data[0])-1] #ruta de origen de la imagen
+	data[1] = data[1][51:len(data[1])-1] #destino de guardado
+	data[2] = int(data[2][23:len(data[2])-1]) #numero de generaciones
+	data[3] = int(data[3][38:len(data[3])-1]) #porcentaje de mutacion
+	data[4] = int(data[4][23:len(data[4])-1]) #cantidad de individuos
+	data[5] = int(data[5][27:len(data[5])-1]) #porcentaje de reproduccion
+	if not(os.path.exists(data[0])):
+		raise Exception("Imagen no encontrada, verifique el campo de nuevo.")
+	if not(os.path.exists(data[1])):
+		raise Exception("Ruta de guardado no encontrada, verifique el campo de nuevo.")
+	if data[2]<=0:
+		raise Exception("Las generaciones no pueden ser negativas")
+	if not (0<=data[3]<=100):
+		raise Exception("El porcentaje de mutacion debe de estar entre 0 y 100")
+	if data[4]<=0:
+		raise Exception("La cantidad de individuos debe ser mayor que 0")
+	if not (0<=data[5]<=100):
+		raise Exception("El porcentaje de reproduccion debe de estar entre 0 y 100")
+	return data

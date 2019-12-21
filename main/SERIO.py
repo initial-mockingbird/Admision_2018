@@ -13,11 +13,12 @@ import os
 
 
 #nombre del archivo a manipular
-nombre = input("Ingrese la ruta de la imagen: ")
+data = FuncionesSeria.check_load_config_file()
+nombre = data[0]
 #abrimos una imagen
 im = Image.open(nombre)
 #ruta destino:
-ruta_destino = input("Ingrese la ruta de la carpeta donde se guardaran los resultados: ")
+ruta_destino = data[1]
 #creamos un canvas totalmente blanco del mismo tamano de la imagen
 canvas = Image.new('RGB', im.size, (255,255,255,0))
 #creamos una superficie sobre el canvas blanco en la cual dibujaremos el resultado
@@ -28,11 +29,11 @@ width, height = im.size
 
 #Datos que deberia pedir la interfaz:
 #suggested: 10
-generacion=int(input("Ingrese generacion: "))
-porcentaje_mut=int(input("Ingrese porcentaje de mutacion: "))
+generacion= data[2]
+porcentaje_mut= data[3]
 #suggested:10
-poblacion = int(input("Ingrese la poblacion: "))
-porcentaje_re=int(input("Ingrese porcentaje de reproduccion: "))
+poblacion = data[4]
+porcentaje_re= data[5]
 
 #Aqui se guardan los individuos los cuales van a ser una super clase
 individuos = []
@@ -128,7 +129,7 @@ for i in range(len(individuos)):
 	individuos[i].TriDrawColor()
 	individuos[i].FloodFillBFS()
 	individuos[i].displayImg(ruta_destino)
-	os.rename(ruta_destino+"/Result.jpg", ruta_destino+"/ResultInd"+str(i)+".jpg")
+	os.rename(ruta_destino+"Result.jpg", ruta_destino+"ResultInd"+str(i)+".jpg")
 	#input()
 print("---------------------------------------------------------")
 
@@ -402,7 +403,7 @@ for i in range(len(individuos)):
 	individuos[i].FloodFillBFS()
 	individuos[i].FillBlanks()
 	individuos[i].displayImg(ruta_destino)
-	os.rename(ruta_destino+"/Result.jpg", ruta_destino+"/ResultFinal"+str(i)+"jpg")
+	os.rename(ruta_destino+"Result.jpg", ruta_destino+"ResultFinal"+str(i)+"jpg")
 	print("---------------------------------------------------------")
 	#input()
 
