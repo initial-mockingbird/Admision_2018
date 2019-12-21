@@ -37,5 +37,5 @@ la ruta de guardado, u cualquier otro dato, basta con modificar los campos corre
 
 ## Authors
 
-* **Daniel Pinto** [github](https://github.com/PurpleBooth)
+* **Daniel Pinto** [Github](https://github.com/initial-mockingbird?tab=repositories)
 
