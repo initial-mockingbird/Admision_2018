@@ -31,9 +31,9 @@ la ruta de guardado, u cualquier otro dato, basta con modificar los campos corre
 
 ## Resultados
 
-![best_girl](./BESTGIRL.gif.mp4)
+![best_girl](./BESTGIRL.gif)
 
-![monte](./monte.gif.mp4)
+![monte](./monte.gif)
 
 ## Authors
 
